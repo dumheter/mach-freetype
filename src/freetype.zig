@@ -351,7 +351,7 @@ pub const Bitmap = struct {
     }
 
     pub fn buffer(self: Bitmap) ?[]const u8 {
-        const buffer_size = std.math.absCast(self.pitch()) * self.rows();
+        const buffer_size = @abs(self.pitch()) * self.rows();
         return if (self.handle.buffer == null)
             // freetype returns a null pointer for zero-length allocations
             // https://github.com/hexops-graveyard/freetype/blob/bbd80a52b7b749140ec87d24b6c767c5063be356/freetype/src/base/ftutil.c#L135
